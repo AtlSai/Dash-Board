@@ -169,14 +169,13 @@ function Main() {
                   className="dark:before:bg-chevron-white"
                   to="/"
                 >
-                  Dashboards
+                  Dictionary
                 </Breadcrumb.Link>
                 <Breadcrumb.Link
                   className="dark:before:bg-chevron-white"
                   to="/"
                   active={true}
                 >
-                  Analytics
                 </Breadcrumb.Link>
               </Breadcrumb>
               {/* END: Breadcrumb */}

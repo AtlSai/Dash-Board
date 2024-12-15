@@ -139,12 +139,12 @@ function Highlight({
           >
             {children}
           </code>
-          <textarea
+          {/* <textarea
             ref={copySourceEl}
             value={copySource}
             onChange={() => {}}
             className="absolute w-0 h-0 p-0 -mt-1 -ml-1"
-          ></textarea>
+          ></textarea> */}
         </pre>
       </div>
     </div>

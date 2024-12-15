@@ -22,6 +22,7 @@ module.exports = {
       },
     },
     extend: {
+      
       screens: {
         "3xl": "1600px",
       },
@@ -53,6 +54,7 @@ module.exports = {
         },
       },
       fontFamily: {
+        publicSans: ['Public Sans', 'sans-serif'],
         "public-sans": ["Public Sans"],
         "dm-sans": ["DM Sans"],
       },

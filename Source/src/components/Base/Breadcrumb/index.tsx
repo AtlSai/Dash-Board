@@ -26,7 +26,7 @@ function Breadcrumb({ className, light, children }: BreadcrumbProps) {
         <ol
           className={clsx([
             "flex items-center text-theme-1 dark:text-slate-300",
-            { "text-white/90": light },
+            { "text-black/90": light },
           ])}
         >
           {Array.isArray(children)

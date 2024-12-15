@@ -361,7 +361,7 @@ function Main() {
                   className="dark:before:bg-chevron-white"
                   to="/"
                 >
-                  Dashboards
+                  Dictionary
                 </Breadcrumb.Link>
                 <Breadcrumb.Link
                   className="dark:before:bg-chevron-white"

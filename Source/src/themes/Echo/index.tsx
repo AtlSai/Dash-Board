@@ -20,6 +20,7 @@ import QuickSearch from "@/components/QuickSearch";
 import SwitchAccount from "@/components/SwitchAccount";
 import NotificationsPanel from "@/components/NotificationsPanel";
 import ActivitiesPanel from "@/components/ActivitiesPanel";
+import logo from "@/assets/logo_law.webp"
 
 function Main() {
   const dispatch = useAppDispatch();
@@ -89,9 +90,9 @@ function Main() {
     <div
       className={clsx([
         "echo group bg-gradient-to-b from-slate-200/70 to-slate-50 background relative min-h-screen dark:from-darkmode-800/[.95] dark:to-darkmode-900/[.95]",
-        "before:content-[''] before:h-[370px] before:w-screen before:bg-gradient-to-t before:from-theme-1/80 before:to-theme-2 [&.background--hidden]:before:opacity-0 before:transition-[opacity,height] before:ease-in-out before:duration-300 before:top-0 before:fixed",
+        "before:content-[''] before:h-[370px] before:w-screen before:bg-[#1262D2] [&.background--hidden]:before:opacity-0 before:transition-[opacity,height] before:ease-in-out before:duration-300 before:top-0 before:fixed",
         "after:content-[''] after:h-[370px] after:w-screen [&.background--hidden]:after:opacity-0 after:transition-[opacity,height] after:ease-in-out after:duration-300 after:top-0 after:fixed after:bg-texture-white after:bg-contain after:bg-fixed after:bg-[center_-13rem] after:bg-no-repeat",
-        topBarActive && "background--hidden",
+        // topBarActive && "background--hidden",
       ])}
     >
       <div
@@ -144,15 +145,16 @@ function Main() {
               href=""
               className="flex items-center transition-[margin] duration-300 group-[.side-menu--collapsed]:xl:ml-2 group-[.side-menu--collapsed.side-menu--on-hover]:xl:ml-0"
             >
-              <div className="flex items-center justify-center w-[34px] rounded-lg h-[34px] bg-gradient-to-b from-theme-1 to-theme-2/80 transition-transform ease-in-out group-[.side-menu--collapsed.side-menu--on-hover]:xl:-rotate-180">
+              {/* <div className="flex items-center justify-center w-[34px] rounded-lg h-[34px] bg-gradient-to-b from-theme-1 to-theme-2/80 transition-transform ease-in-out group-[.side-menu--collapsed.side-menu--on-hover]:xl:-rotate-180">
                 <div className="w-[16px] h-[16px] relative -rotate-45 [&_div]:bg-white">
                   <div className="absolute w-[21%] left-0 inset-y-0 my-auto rounded-full opacity-50 h-[75%]"></div>
                   <div className="absolute w-[21%] inset-0 m-auto h-[120%] rounded-full"></div>
                   <div className="absolute w-[21%] right-0 inset-y-0 my-auto rounded-full opacity-50 h-[75%]"></div>
                 </div>
-              </div>
+              </div> */}
+              <img src={logo} alt="" className="h-10 " />
               <div className="ml-3.5 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 transition-opacity font-medium">
-                ECHO
+                Lawwheels
               </div>
             </a>
             <a
@@ -349,11 +351,12 @@ function Main() {
             ])}
           >
             <div
-              className="
-                container flex items-center w-full h-full transition-[padding,background-color,border-color] ease-in-out duration-300 box bg-transparent border-transparent shadow-none dark:bg-transparent dark:border-transparent
-                group-[.top-bar--active]:box group-[.top-bar--active]:px-5
-                group-[.top-bar--active]:bg-transparent group-[.top-bar--active]:border-transparent group-[.top-bar--active]:bg-gradient-to-r group-[.top-bar--active]:from-theme-1 group-[.top-bar--active]:to-theme-2
-              "
+             className="
+             container flex items-center w-full h-full transition-[padding,background-color,border-color] ease-in-out duration-300 box bg-transparent border-transparent shadow-none dark:bg-transparent dark:border-transparent
+             group-[.top-bar--active]:box group-[.top-bar--active]:px-5
+             group-[.top-bar--active]:bg-transparent group-[.top-bar--active]:border-transparent 
+             group-[.top-bar--active]:bg-gradient-to-r group-[.top-bar--active]:from-[white] group-[.top-bar--active]:to-[white]
+           "           
             >
               <div className="flex items-center gap-1 xl:hidden">
                 <a
@@ -380,23 +383,23 @@ function Main() {
               {/* BEGIN: Breadcrumb */}
               <Breadcrumb light className="flex-1 hidden xl:block">
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white"
+                  className="dark:before:bg-chevron-white text-black"
                   to="/"
                 >
                   App
                 </Breadcrumb.Link>
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white"
+                  className="dark:before:bg-chevron-white text-black"
                   to="/"
                 >
-                  Dashboards
+                  Dashboard
                 </Breadcrumb.Link>
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white"
+                  className="dark:before:bg-chevron-white text-black"
                   to="/"
                   active={true}
                 >
-                  Analytics
+                 Dictionary
                 </Breadcrumb.Link>
               </Breadcrumb>
               {/* END: Breadcrumb */}
@@ -405,7 +408,7 @@ function Main() {
                 className="relative justify-center flex-1 hidden xl:flex"
                 onClick={() => setQuickSearch(true)}
               >
-                <div className="bg-white/[0.12] dark:bg-darkmode-900/30 dark:border-transparent border-transparent border w-[350px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-white/60 cursor-pointer hover:bg-white/[0.15] transition-colors duration-300 hover:duration-100">
+                <div className="bg-black/[0.12] dark:bg-darkmode-900/30 dark:border-transparent border-transparent border w-[350px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-black/60 cursor-pointer hover:bg-black/[0.25] transition-colors duration-300 hover:duration-100">
                   <Lucide icon="Search" className="w-[18px] h-[18px]" />
                   <div className="ml-2.5 mr-auto">Quick search...</div>
                   <div>⌘K</div>
@@ -451,7 +454,7 @@ function Main() {
                   </a>
                 </div>
                 <Menu className="ml-5">
-                  <Menu.Button className="overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-white/[0.15] image-fit">
+                  <Menu.Button className="overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-black/[0.15] image-fit">
                     <img
                       alt="Tailwise - Admin Dashboard Template"
                       src={users.fakeUsers()[0].photo}
