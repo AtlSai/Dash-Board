@@ -194,12 +194,10 @@ const Main = () => {
               ))}
             </div>
           </div>
-
           {/* Content Section Below */}
           <div className="mt-[80px]">
             {/* Add content here */}
           </div>
-
           <div className="w-full m-auto bg-white mt-[110px] flex flex-wrap gap-6 items-center justify-center p-4">
             {/* Repeated Content Box */}
             {Array(8)
