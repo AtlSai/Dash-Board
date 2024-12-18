@@ -17,22 +17,22 @@ export interface SideMenuState {
 
 const initialState: SideMenuState = {
   menu: [
-    "DASHBOARDS",
     {
       icon: "GaugeCircle",
       pathname: "/",
+      title: "Dashboard",
+    },
+    {
+      icon: "ActivitySquare",
+      pathname: "/dashboard-overview-2",
       title: "Dictionary",
     },
-    // {
-    //   icon: "ActivitySquare",
-    //   pathname: "/dashboard-overview-2",
-    //   title: "CRM",
-    // },
     {
       icon: "Album",
       pathname: "/dashboard-overview-3",
       title: "Judgement",
     },
+    
     // {
     //   icon: "BookMarked",
     //   pathname: "/dashboard-overview-4",

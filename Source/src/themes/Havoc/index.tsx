@@ -161,19 +161,19 @@ function Main() {
               {/* BEGIN: Breadcrumb */}
               <Breadcrumb light className="flex-1 hidden xl:block">
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white"
+                  className="dark:before:bg-chevron-black"
                   to="/"
                 >
                   App
                 </Breadcrumb.Link>
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white"
+                  className="dark:before:bg-chevron-black"
                   to="/"
                 >
                   Dictionary
                 </Breadcrumb.Link>
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white"
+                  className="dark:before:bg-chevron-black"
                   to="/"
                   active={true}
                 >

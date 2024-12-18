@@ -162,7 +162,7 @@ function Main() {
           }}
           // className="fixed bottom-0 right-0 z-50 flex items-center justify-center mb-5 mr-5 text-white rounded-full shadow-lg cursor-pointer w-14 h-14 bg-theme-1"
         >
-          <Lucide className="w-5 h-5" icon="Settings" />
+          {/* <Lucide className="w-5 h-5" icon="Settings" /> */}
         </div>
       </div>
     </>

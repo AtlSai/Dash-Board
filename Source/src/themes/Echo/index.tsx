@@ -20,9 +20,17 @@ import QuickSearch from "@/components/QuickSearch";
 import SwitchAccount from "@/components/SwitchAccount";
 import NotificationsPanel from "@/components/NotificationsPanel";
 import ActivitiesPanel from "@/components/ActivitiesPanel";
-import logo from "@/assets/logo_law.webp"
+import logo from "@/assets/logo_law.webp";
+import { Moon, Sun } from "lucide-react";
+import { Search } from "lucide-react";
+import back from "@/assets/Group 460.png";
+import { bg } from "@fullcalendar/core/internal-common";
+// import { useState } from "react";
+// import Main_NavBar_2 from "@/components/Main_NavBar_2"
 
 function Main() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const dispatch = useAppDispatch();
   const compactMenu = useAppSelector(selectCompactMenu);
   const setCompactMenu = (val: boolean) => {
@@ -63,6 +71,12 @@ function Main() {
       el.requestFullscreen();
     }
   };
+  // const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle("dark"); // Add/remove dark mode class
+  };
 
   useEffect(() => {
     if (scrollableRef.current) {
@@ -89,16 +103,16 @@ function Main() {
   return (
     <div
       className={clsx([
-        "echo group bg-gradient-to-b from-slate-200/70 to-slate-50 background relative min-h-screen dark:from-darkmode-800/[.95] dark:to-darkmode-900/[.95]",
-        "before:content-[''] before:h-[370px] before:w-screen before:bg-[#1262D2] [&.background--hidden]:before:opacity-0 before:transition-[opacity,height] before:ease-in-out before:duration-300 before:top-0 before:fixed",
-        "after:content-[''] after:h-[370px] after:w-screen [&.background--hidden]:after:opacity-0 after:transition-[opacity,height] after:ease-in-out after:duration-300 after:top-0 after:fixed after:bg-texture-white after:bg-contain after:bg-fixed after:bg-[center_-13rem] after:bg-no-repeat",
+        "bg-[url('@/assets/Group 460.png')] echo group bg-gradient-to-b from-slate-200/70 to-slate-50 background relative min-h-screen dark:from-darkmode-800/[.95] dark:to-darkmode-900/[.95]",
+        "before:content-[''] before:h-[315px] before:w-screen before:bg-[#1262D2] [&.background--hidden]:before:opacity-0 before:transition-[opacity,height] before:ease-in-out before:duration-300 before:top-0 before:fixed z-10",
+        "after:content-[''] after:h-[315px] after:w-screen [&.background--hidden]:after:opacity-0 after:transition-[opacity,height] after:ease-in-out after:duration-300 after:top-0 after:fixed after:bg-texture-white after:bg-contain after:bg-fixed after:bg-[center_-13rem] after:bg-no-repeat",
         // topBarActive && "background--hidden",
       ])}
     >
       <div
         className={clsx([
-          "xl:ml-0 shadow-xl transition-[margin,padding] duration-300 xl:shadow-none fixed top-0 left-0 z-50 side-menu group inset-y-0 xl:py-3.5 xl:pl-3.5",
-          "after:content-[''] after:fixed after:inset-0 after:bg-black/80 after:xl:hidden",
+          "xl:ml-0 shadow-xl transition-[margin,padding] duration-300 xl:shadow-none fixed   z-50 side-menu group inset-y-0",
+          "after:content-[''] after:fixed after:inset-0 after:bg-white/80 after:x/l:hidden",
           { "side-menu--collapsed": compactMenu },
           { "side-menu--on-hover": compactMenuOnHover },
           { "ml-0 after:block": activeMobileMenu },
@@ -120,12 +134,12 @@ function Main() {
             }}
             className="mt-5 ml-5"
           >
-            <Lucide icon="X" className="w-8 h-8 text-white" />
+            <Lucide icon="X" className="w-8 h-8 text-black" />
           </a>
         </div>
         <div
           className={clsx([
-            "h-full box bg-white/[0.95] rounded-none xl:rounded-xl z-20 relative w-[275px] duration-300 transition-[width] group-[.side-menu--collapsed]:xl:w-[91px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:shadow-[6px_0_12px_-4px_#0000000f] group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[275px] overflow-hidden flex flex-col",
+            "h-full box bg-customGray relative w-[200px] duration-300 transition-[width] group-[.side-menu--collapsed]:xl:w-[91px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:shadow-[6px_0_12px_-4px_#0000000f] group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[220px] overflow-hidden flex flex-col rounded-none z-10",
           ])}
           onMouseOver={(event) => {
             event.preventDefault();
@@ -153,14 +167,15 @@ function Main() {
                 </div>
               </div> */}
               <img src={logo} alt="" className="h-10 " />
-              <div className="ml-3.5 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 transition-opacity font-medium">
+
+              {/* <div className="ml-3.5 group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:opacity-0 transition-opacity font-medium">
                 Lawwheels
-              </div>
+              </div> */}
             </a>
             <a
               href=""
               onClick={toggleCompactMenu}
-              className="hidden group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed]:xl:opacity-0 transition-[opacity,transform] 3xl:flex items-center justify-center w-[20px] h-[20px] ml-auto border rounded-full border-slate-600/40 hover:bg-slate-600/5 dark:border-darkmode-100"
+              className="hidden group-[.side-menu--collapsed.side-menu--on-hover]:xl:opacity-100 group-[.side-menu--collapsed]:xl:rotate-180 group-[.side-menu--collapsed]:xl:opacity-0 transition-[opacity,transform] 3xl:flex items-center justify-center w-[20px] h-[20px] ml-auto border rounded-full border-slate-600/40 hover:bg-slate-600/5 dark:border-darkmode-100 z-100"
             >
               <Lucide icon="ArrowLeft" className="w-3.5 h-3.5 stroke-[1.3]" />
             </a>
@@ -342,21 +357,22 @@ function Main() {
             </ul>
           </div>
         </div>
-        <div className="fixed h-[65px] transition-[margin] duration-100 xl:ml-[275px] group-[.side-menu--collapsed]:xl:ml-[90px] mt-3.5 inset-x-0 top-0">
+        <div
+          className="
+        fixed h-[64px] transition-[margin] duration-100 xl:ml-[258px] group-[.side-menu--collapsed]:xl:ml-[90px] mt-3 m-auto inset-x-0 top-0"
+        >
           <div
-            className={clsx([
-              "top-bar absolute left-0 xl:left-3.5 right-0 h-full mx-5 group",
-              "before:content-[''] before:absolute before:top-0 before:inset-x-0 before:-mt-[15px] before:h-[20px] before:backdrop-blur",
-              topBarActive && "top-bar--active",
-            ])}
+            // className={clsx([
+            //   "top-bar absolute left-0  right-0 h-full group",
+            //   "before:content-[''] before:absolute before:top-0 before:inset-x-0 before:-mt-[15px] before:h-[20px] before:backdrop-blur",
+            //   topBarActive && "top-bar--/active",
+            // ])}
           >
             <div
-             className="
-             container flex items-center w-full h-full transition-[padding,background-color,border-color] ease-in-out duration-300 box bg-transparent border-transparent shadow-none dark:bg-transparent dark:border-transparent
+              className="
+             container flex items-center w-full h-full transition-[padding,background-color,border-color] ease-in-out duration-300 box bg-transparent border-transparent rounded-none shadow-none dark:bg-transparent dark:border-transparent
              group-[.top-bar--active]:box group-[.top-bar--active]:px-5
-             group-[.top-bar--active]:bg-transparent group-[.top-bar--active]:border-transparent 
-             group-[.top-bar--active]:bg-gradient-to-r group-[.top-bar--active]:from-[white] group-[.top-bar--active]:to-[white]
-           "           
+           "
             >
               <div className="flex items-center gap-1 xl:hidden">
                 <a
@@ -365,96 +381,192 @@ function Main() {
                     event.preventDefault();
                     setActiveMobileMenu(true);
                   }}
-                  className="p-2 text-white rounded-full hover:bg-white/5"
+                  className="p-2 text-black rounded-full hover:bg-black/5"
                 >
-                  <Lucide icon="AlignJustify" className="w-[18px] h-[18px]" />
+                  <Lucide
+                    icon="AlignJustify"
+                    className="text-white mt[-5px] w-[25px] h-[25px]"
+                  />
                 </a>
-                <a
+                {/* <a
                   href=""
-                  className="p-2 text-white rounded-full hover:bg-white/5"
+                  className="p-2 text-black rounded-full hover:bg-black/5"
                   onClick={(e) => {
                     e.preventDefault();
                     setQuickSearch(true);
                   }}
                 >
                   <Lucide icon="Search" className="w-[18px] h-[18px]" />
-                </a>
+                </a> */}
               </div>
               {/* BEGIN: Breadcrumb */}
-              <Breadcrumb light className="flex-1 hidden xl:block">
+              {/* <Breadcrumb light className="flex-1 hidden xl:block">
+                <button
+                  className="p-2 ml-5 rounded-full bg-gray-200 hover:bg-gray-300"
+                  title="Go back"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-2 h-2 text-gray-700"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white text-black"
+                  className="dark:before:bg-chevron-black flex text-black"
                   to="/"
                 >
-                  App
+                  <h1>App</h1>
+                  <Lucide icon="ChevronRight" className="w-[18px] h-[18px]" />
                 </Breadcrumb.Link>
+                <Lucide icon="ChevronRight" className="w-[18px] h-[18px]" />
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white text-black"
+                  className="dark:before:bg-chevron-black text-black"
                   to="/"
                 >
                   Dashboard
                 </Breadcrumb.Link>
+                <Lucide icon="ChevronRight" className="w-[18px] h-[18px]" />
                 <Breadcrumb.Link
-                  className="dark:before:bg-chevron-white text-black"
+                  className="dark:before:bg-chevron-black text-black"
                   to="/"
                   active={true}
                 >
-                 Dictionary
+                  Dictionary
                 </Breadcrumb.Link>
-              </Breadcrumb>
+                <Lucide icon="ChevronRight" className="w-[18px] h-[18px]" />
+              </Breadcrumb> */}
               {/* END: Breadcrumb */}
               {/* BEGIN: Search */}
-              <div
+              {/* <div
                 className="relative justify-center flex-1 hidden xl:flex"
                 onClick={() => setQuickSearch(true)}
               >
-                <div className="bg-black/[0.12] dark:bg-darkmode-900/30 dark:border-transparent border-transparent border w-[350px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-black/60 cursor-pointer hover:bg-black/[0.25] transition-colors duration-300 hover:duration-100">
+                <div className=" dark:border-black border-black border w-[350px] h-[36px] flex items-center py-2 px-3.5 rounded-[0.5rem] text-blue cursor-pointer hover:bg-blue transition-colors duration-300 hover:duration-100">
                   <Lucide icon="Search" className="w-[18px] h-[18px]" />
-                  <div className="ml-2.5 mr-auto">Quick search...</div>
-                  <div>⌘K</div>
+                  <div className="ml-2.5 mr-auto"> search...</div>
                 </div>
               </div>
               <QuickSearch
                 quickSearch={quickSearch}
                 setQuickSearch={setQuickSearch}
-              />
+              /> */}
               {/* END: Search */}
+              {/* <div className={`${darkMode ? "dark" : ""} p-4`}>
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="p-2 rounded-full bg-white hover:bg-gray-300 shadow-md dark:bg-gray-800 dark:hover:bg-gray-700"
+                >
+                  {darkMode ? (
+                    <Sun className="w-4 h-4 text-white-400" />
+                  ) : (
+                    <Moon className="w-4 h-4 text-white-800" />
+                  )}
+                </button>
+
+                <p className="mt-4 text-gray-800 dark:text-gray-200">
+                  {darkMode ? "" : ""}
+                </p>
+              </div> */}
               {/* BEGIN: Notification & User Menu */}
               <div className="flex items-center flex-1">
                 <div className="flex items-center gap-1 ml-auto">
                   <a
                     href=""
-                    className="p-2 text-white rounded-full hover:bg-white/5"
+                    className="p-2 text-black rounded-full hover:bg-black/5"
                     onClick={(e) => {
                       e.preventDefault();
                       setActivitiesPanel(true);
                     }}
                   >
-                    <Lucide icon="LayoutGrid" className="w-[18px] h-[18px]" />
+                    {/* <Lucide icon="LayoutGrid" className="w-[18px] h-[18px]" /> */}
                   </a>
                   <a
                     href=""
-                    className="p-2 text-white rounded-full hover:bg-white/5"
+                    className="p-2 text-black rounded-full hover:bg-black/5"
                     onClick={(e) => {
                       e.preventDefault();
                       requestFullscreen();
                     }}
                   >
-                    <Lucide icon="Expand" className="w-[18px] h-[18px]" />
+                    {/* <Lucide icon="Expand" className="w-[18px] h-[18px]" /> */}
                   </a>
+                  <div className="flex items-center">
+                    {/* Search Icon */}
+                    <button
+                      title="go"
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="p-2 rounded dark:hover:bg-gray-700"
+                    >
+                      <Search className="w-6 h-6 text-white dark:text-gray-200" />
+                    </button>
+
+                    {/* Search Bar */}
+                    {isOpen && (
+                      <div className="relative w-64">
+                        {/* Search Icon */}
+                        <div className="absolute inset-y-0 left-0 flex justify-end  items-center pl-3">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-400 flex float-right dark:text-gray-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M11 19a8 8 0 100-16 8 8 0 000 16zm10-2l-4.35-4.35"
+                            />
+                          </svg>
+                        </div>
+
+                        {/* Search Input */}
+                        <input
+                          type="text"
+                          placeholder="Search..."
+                          className="pl-10 pr-4 py-2 w-full rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <button
+                    onClick={toggleDarkMode}
+                    className="flex items-center p-2"
+                  >
+                    {darkMode ? (
+                      <Sun className="w-6 h-6 text-yellow-500" />
+                    ) : (
+                      <Moon className="w-6 h-6 text-white" />
+                    )}
+                    <span className="ml-2">{darkMode ? "" : ""}</span>
+                  </button>
                   <a
                     href=""
-                    className="p-2 text-white rounded-full hover:bg-white/5"
+                    className="p-2 text-black rounded-full hover:bg-black/5"
                     onClick={(e) => {
                       e.preventDefault();
                       setNotificationsPanel(true);
                     }}
                   >
-                    <Lucide icon="Bell" className="w-[18px] h-[18px]" />
+                    <Lucide
+                      icon="Bell"
+                      className="text-white dark:text-gray-200 w-[25px] h-[25px]"
+                    />
                   </a>
                 </div>
                 <Menu className="ml-5">
-                  <Menu.Button className="overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-black/[0.15] image-fit">
+                  <Menu.Button className="overflow-hidden rounded-full w-[36px] h-[36px] border-[3px] border-black/[0.15] image-fit mr-5">
                     <img
                       alt="Tailwise - Admin Dashboard Template"
                       src={users.fakeUsers()[0].photo}

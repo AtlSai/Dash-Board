@@ -22,7 +22,6 @@ module.exports = {
       },
     },
     extend: {
-      
       screens: {
         "3xl": "1600px",
       },
@@ -31,6 +30,7 @@ module.exports = {
           1: "rgb(var(--color-theme-1) / <alpha-value>)",
           2: "rgb(var(--color-theme-2) / <alpha-value>)",
         },
+        customGray: '#f1f5f9',
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
         success: "rgb(var(--color-success) / <alpha-value>)",
@@ -54,7 +54,6 @@ module.exports = {
         },
       },
       fontFamily: {
-        publicSans: ['Public Sans', 'sans-serif'],
         "public-sans": ["Public Sans"],
         "dm-sans": ["DM Sans"],
       },
